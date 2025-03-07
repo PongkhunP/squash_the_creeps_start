@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://uk6ibebjdjeq"]
+
+[ext_resource type="PackedScene" uid="uid://dqkwx4l6g15p4" path="res://Scenes/player.tscn" id="1_jjgbg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7u77a"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jjgbg"]
+size = Vector3(60, 2, 60)
+
+[node name="Main" type="Node"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_7u77a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_jjgbg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.509989, -0.466737, -0.722543, -0.58573, -0.426727, 0.689075, -0.629945, 0.774636, -0.0557557, 0, 11.0494, 0)
+light_color = Color(0.988235, 0.996078, 0.996078, 1)
+light_energy = 1.099
+
+[node name="Player" parent="." instance=ExtResource("1_jjgbg")]
+
+[node name="Marker3D" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 19, 19)
+projection = 1
+size = 19.0
+far = 100.0
